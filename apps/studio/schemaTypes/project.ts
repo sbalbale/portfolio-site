@@ -23,16 +23,10 @@ export default defineType({
       type: 'text',
     }),
     defineField({
-      name: 'tech_stack',
-      title: 'Tech Stack',
-      type: 'array',
-      of: [{type: 'string'}],
-    }),
-    defineField({
       name: 'github_url',
       title: 'GitHub URL',
       type: 'url',
     }),
-    orderRankField({ type: 'project' }),
+    orderRankField({type: 'project'}),
   ],
 })

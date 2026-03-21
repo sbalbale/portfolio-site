@@ -85,16 +85,6 @@ export default function ProjectsSection({ data }: { data?: Project[] }) {
                   transition={{ duration: 0.25, ease: "circOut" }}
                   className="flex flex-col items-start w-full h-full justify-center relative z-10"
                 >
-                  <div className="flex items-center gap-3 mb-6 bg-foreground/10 py-2 px-3 md:px-4 rounded-none border border-muted/20">
-                    <Code
-                      className="text-secondary w-4 h-4 md:w-5 md:h-5"
-                      strokeWidth={2}
-                    />
-                    <span className="font-headline text-[10px] md:text-xs tracking-widest uppercase text-secondary font-semibold">
-                      {activeProject.category_tag}
-                    </span>
-                  </div>
-
                   <h3 className="font-headline text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6 text-foreground leading-tight tracking-tight">
                     {activeProject.title}
                   </h3>
@@ -103,14 +93,16 @@ export default function ProjectsSection({ data }: { data?: Project[] }) {
                     {activeProject.short_description}
                   </p>
 
-                  <a
-                    href={activeProject.github_url || "#"}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-full sm:w-auto text-center rounded-none bg-primary/20 text-primary font-headline font-semibold text-xs md:text-sm px-6 py-4 md:px-8 md:py-4 uppercase tracking-[0.15em] transition-all duration-300 hover:brightness-110 shadow-[0_0_20px_rgba(130,170,255,0.1)]"
-                  >
-                    View Architecture →
-                  </a>
+                  {activeProject.github_url && (
+                    <a
+                      href={activeProject.github_url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full sm:w-auto text-center rounded-none bg-primary/20 text-primary font-headline font-semibold text-xs md:text-sm px-6 py-4 md:px-8 md:py-4 uppercase tracking-[0.15em] transition-all duration-300 hover:brightness-110 shadow-[0_0_20px_rgba(130,170,255,0.1)]"
+                    >
+                      View Details →
+                    </a>
+                  )}
                 </motion.div>
               </AnimatePresence>
             </div>
