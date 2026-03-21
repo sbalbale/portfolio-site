@@ -10,10 +10,18 @@ export interface SkillsData {
 export default function SkillsSection({ data }: { data?: SkillsData }) {
   if (!data) {
     return (
-      <section id="skills" className="min-h-screen w-full flex flex-col bg-foreground/5 py-24 md:py-32 px-6 md:px-16 lg:px-32 relative overflow-hidden">
-        <div className="max-w-6xl mx-auto my-auto w-full relative z-10 text-center">
-          <h2 className="font-headline text-4xl font-bold uppercase tracking-tighter text-foreground mb-4">PROFICIENCIES_</h2>
-          <p className="text-muted font-body">Skill metrics currently compiling. No proficiencies deployed to this environment yet.</p>
+      <section
+        id="skills"
+        className="min-h-screen w-full flex flex-col bg-foreground/5 pt-24 pb-40 md:pt-32 md:pb-48 px-6 md:px-16 lg:px-32 relative overflow-hidden"
+      >
+        <div className="max-w-6xl mx-auto my-auto w-full relative z-10 text-center shrink-0 py-12">
+          <h2 className="font-headline text-4xl font-bold uppercase tracking-tighter text-foreground mb-4">
+            PROFICIENCIES_
+          </h2>
+          <p className="text-muted font-body">
+            Skill metrics currently compiling. No proficiencies deployed to this
+            environment yet.
+          </p>
         </div>
       </section>
     );
@@ -22,8 +30,11 @@ export default function SkillsSection({ data }: { data?: SkillsData }) {
   const { hardwareSkills, softwareSkills, cloudSkills } = data;
 
   return (
-    <section id="skills" className="min-h-screen w-full flex flex-col bg-foreground/5 py-24 md:py-32 px-6 md:px-16 lg:px-32 relative overflow-hidden">
-      <div className="max-w-6xl mx-auto my-auto w-full relative z-10">
+    <section
+      id="skills"
+      className="min-h-screen w-full flex flex-col bg-foreground/5 pt-24 pb-40 md:pt-32 md:pb-48 px-6 md:px-16 lg:px-32 relative overflow-hidden"
+    >
+      <div className="max-w-6xl mx-auto my-auto w-full relative z-10 shrink-0 py-12">
         <div className="mb-12 md:mb-20">
           <h2 className="font-headline text-4xl md:text-5xl font-bold uppercase tracking-tighter text-foreground">
             PROFICIENCIES_

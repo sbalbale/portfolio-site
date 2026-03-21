@@ -13,20 +13,31 @@ export interface Experience {
 
 export default function ExperienceSection({ data }: { data?: Experience[] }) {
   const experiences = data || [];
-  
+
   if (!data || data.length === 0) {
     return (
-      <section id="experience" className="min-h-screen w-full flex flex-col bg-background py-24 md:py-32 px-6 md:px-16 lg:px-32 relative overflow-hidden">
-        <div className="max-w-4xl mx-auto my-auto w-full relative z-10 text-center">
-          <h2 className="font-headline text-4xl font-bold uppercase tracking-tighter text-foreground mb-4">EXPERIENCE.</h2>
-          <p className="text-muted font-body">Experience data currently compiling. No operational history deployed to this environment yet.</p>
+      <section
+        id="experience"
+        className="min-h-screen w-full flex flex-col bg-background pt-24 pb-40 md:pt-32 md:pb-48 px-6 md:px-16 lg:px-32 relative overflow-hidden"
+      >
+        <div className="max-w-4xl mx-auto my-auto w-full relative z-10 text-center shrink-0 py-12">
+          <h2 className="font-headline text-4xl font-bold uppercase tracking-tighter text-foreground mb-4">
+            EXPERIENCE.
+          </h2>
+          <p className="text-muted font-body">
+            Experience data currently compiling. No operational history deployed
+            to this environment yet.
+          </p>
         </div>
       </section>
     );
   }
   return (
-    <section id="experience" className="min-h-screen w-full flex flex-col bg-background py-24 md:py-32 px-6 md:px-16 lg:px-32 relative overflow-hidden">
-      <div className="max-w-4xl mx-auto my-auto w-full relative z-10">
+    <section
+      id="experience"
+      className="min-h-screen w-full flex flex-col bg-background pt-24 pb-40 md:pt-32 md:pb-48 px-6 md:px-16 lg:px-32 relative overflow-hidden"
+    >
+      <div className="max-w-4xl mx-auto my-auto w-full relative z-10 shrink-0 py-12">
         <h2 className="font-headline text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter text-foreground mb-16 md:mb-24 uppercase">
           EXPERIENCE.
         </h2>
@@ -34,7 +45,10 @@ export default function ExperienceSection({ data }: { data?: Experience[] }) {
         <TracingBeam className="pl-6 md:pl-12">
           <div className="flex flex-col gap-12 md:gap-20 relative">
             {experiences.map((exp, index) => (
-              <div key={exp._id || index} className="flex flex-col relative group">
+              <div
+                key={exp._id || index}
+                className="flex flex-col relative group"
+              >
                 <div className="absolute -left-6 md:-left-12 top-1 h-3 w-3 bg-foreground/5 border border-primary rounded-none transition-colors duration-500 group-hover:bg-primary shadow-[0_0_10px_rgba(130,170,255,0)] group-hover:shadow-[0_0_15px_rgba(130,170,255,0.6)] transform -translate-x-1/2 mt-1" />
 
                 <div className="flex-1 pl-4 md:pl-0">

@@ -16,7 +16,9 @@ export default function ContactSection({ data }: { data?: ContactData }) {
   const [error, setError] = useState("");
 
   const heading = data?.heading || "ESTABLISH CONNECTION";
-  const subText = data?.subText || "Available for select technical implementations and architectural inquiries. Let's build the next infrastructure.";
+  const subText =
+    data?.subText ||
+    "Available for select technical implementations and architectural inquiries. Let's build the next infrastructure.";
   const contactEmail = data?.email || "sean@balbale.engineering";
   const location = data?.location || "Boston/MA | Hartford, CT";
 
@@ -52,8 +54,11 @@ export default function ContactSection({ data }: { data?: ContactData }) {
   };
 
   return (
-    <section id="contact" className="min-h-screen w-full flex flex-col bg-background py-24 md:py-32 px-6 md:px-16 lg:px-32 relative overflow-hidden">
-      <div className="max-w-6xl mx-auto flex flex-col lg:flex-row gap-12 lg:gap-24 my-auto w-full relative z-10">
+    <section
+      id="contact"
+      className="min-h-screen w-full flex flex-col bg-background pt-24 pb-40 md:pt-32 md:pb-48 px-6 md:px-16 lg:px-32 relative overflow-hidden"
+    >
+      <div className="max-w-6xl mx-auto flex flex-col lg:flex-row gap-12 lg:gap-24 my-auto w-full relative z-10 shrink-0 py-12">
         {/* Left Column */}
         <div className="flex flex-col justify-center w-full lg:w-1/2">
           <h2 className="font-headline text-4xl md:text-6xl lg:text-7xl font-bold uppercase tracking-tighter text-foreground mb-6 md:mb-8">

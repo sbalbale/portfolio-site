@@ -14,10 +14,18 @@ export interface Research {
 export default function ResearchSection({ data }: { data?: Research[] }) {
   if (!data || data.length === 0 || !data[0]) {
     return (
-      <section id="research" className="min-h-screen w-full flex flex-col bg-background py-24 md:py-32 px-4 md:px-16 lg:px-32 items-center relative overflow-hidden">
-        <div className="w-full max-w-6xl my-auto relative z-10 text-center">
-          <h2 className="font-headline text-4xl font-bold uppercase tracking-tighter text-foreground mb-4">RESEARCH & PUBLICATIONS</h2>
-          <p className="text-muted font-body">Research data currently compiling. No literature deployed to this environment yet.</p>
+      <section
+        id="research"
+        className="min-h-screen w-full flex flex-col bg-background pt-24 pb-40 md:pt-32 md:pb-48 px-4 md:px-16 lg:px-32 items-center relative overflow-hidden"
+      >
+        <div className="w-full max-w-6xl my-auto relative z-10 text-center shrink-0 py-12">
+          <h2 className="font-headline text-4xl font-bold uppercase tracking-tighter text-foreground mb-4">
+            RESEARCH & PUBLICATIONS
+          </h2>
+          <p className="text-muted font-body">
+            Research data currently compiling. No literature deployed to this
+            environment yet.
+          </p>
         </div>
       </section>
     );
@@ -26,8 +34,11 @@ export default function ResearchSection({ data }: { data?: Research[] }) {
   const featured = data[0];
 
   return (
-    <section id="research" className="min-h-screen w-full flex flex-col bg-background py-24 md:py-32 px-4 md:px-16 lg:px-32 items-center relative overflow-hidden">
-      <div className="w-full max-w-6xl my-auto relative z-10">
+    <section
+      id="research"
+      className="min-h-screen w-full flex flex-col bg-background pt-24 pb-40 md:pt-32 md:pb-48 px-4 md:px-16 lg:px-32 items-center relative overflow-hidden"
+    >
+      <div className="w-full max-w-6xl my-auto relative z-10 shrink-0 py-12">
         <div className="bg-foreground/10 p-8 sm:p-12 md:p-24 shadow-2xl relative overflow-hidden rounded-none border border-muted/20">
           <div className="relative z-10 max-w-4xl">
             <span className="font-headline text-primary tracking-widest md:tracking-[0.4em] uppercase text-[10px] md:text-xs mb-6 md:mb-8 block font-bold">
@@ -37,9 +48,7 @@ export default function ResearchSection({ data }: { data?: Research[] }) {
             <h2 className="font-headline text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter text-foreground mb-6 md:mb-8 leading-tight">
               {featured.title}
               <br />
-              <span className="text-muted">
-                {featured.subtitle}
-              </span>
+              <span className="text-muted">{featured.subtitle}</span>
             </h2>
 
             <p className="font-body text-sm sm:text-base md:text-lg lg:text-xl text-muted max-w-3xl mb-10 md:mb-12 leading-relaxed">
