@@ -34,5 +34,6 @@ export const getResearchQuery = groq`
 
 // Singletons
 export const getHeroQuery = groq`*[_type == "hero"][0]`;
+export const getAboutQuery = groq`*[_type == "about"][0]`;
 export const getSkillsQuery = groq`*[_type == "skills"][0]`;
 export const getSiteSettingsQuery = groq`*[_type == "siteSettings"][0]`;
