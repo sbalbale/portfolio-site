@@ -3,12 +3,12 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 
-export default function HeroSection({ data }: { data?: any }) {
+export default function HeroSection({ data, settings }: { data?: any, settings?: any }) {
   const label = data?.label || "ENGINEER & ARCHITECT";
   const headline = data?.headline || "SEAN BALBALE.";
   const subtitle = data?.subtitle || "B.S. Computer Science & B.S. Electrical Engineering. Bridging the gap between physical systems and high-level computation.";
-  const resumeUrl = data?.resumeUrl || "/resume.pdf";
-  const githubUrl = data?.githubUrl || "https://github.com/seanbalbale";
+  const resumeUrl = settings?.resumeUrl || data?.resumeUrl || "/resume.pdf";
+  const githubUrl = settings?.githubUrl || data?.githubUrl || "https://github.com/seanbalbale";
 
   return (
     <section className="min-h-screen w-full flex flex-col justify-center relative items-center bg-background overflow-hidden px-6 pt-32 pb-48 md:px-16 lg:px-32">

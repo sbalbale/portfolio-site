@@ -4,35 +4,20 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Cpu, Activity, Code } from "lucide-react";
 
-const projects = [
-  {
-    id: "three-idiots",
-    title: "Three Idiots",
-    tag: "Hardware + Soft",
-    icon: Cpu,
-    description:
-      "A custom-built embedded system designed for synchronized multi-agent robotic communication.",
-  },
-  {
-    id: "ai-coach",
-    title: "AI Athletic Coach",
-    tag: "Computer Vision",
-    icon: Activity,
-    description:
-      "Deep learning platform utilizing pose estimation to provide real-time biomechanical feedback for athletes.",
-  },
-  {
-    id: "trinity-acapella",
-    title: "Trinity Accidentals",
-    tag: "Web Development",
-    icon: Code,
-    description:
-      "Digital portal for Trinity's premier a cappella group, featuring media streaming and scheduling integrations.",
-  },
-];
+export interface Project {
+  _id: string;
+  title: string;
+  category_tag: string;
+  short_description: string;
+  tech_stack: string[];
+  github_url: string;
+}
 
-export default function ProjectsSection() {
+export default function ProjectsSection({ data }: { data?: Project[] }) {
+  const projects = data || [];
   const [activeIndex, setActiveIndex] = useState(0);
+  
+  if (!projects.length) return null;
   const activeProject = projects[activeIndex];
 
   return (
@@ -54,7 +39,7 @@ export default function ProjectsSection() {
               const isActive = index === activeIndex;
               return (
                 <button
-                  key={project.id}
+                  key={project._id}
                   type="button"
                   onClick={() => setActiveIndex(index)}
                   className={`flex-shrink-0 lg:w-full text-left rounded-none px-6 py-4 md:py-5 transition-all duration-300 font-headline uppercase tracking-widest text-xs md:text-sm font-semibold border-b-4 lg:border-b-0 lg:border-l-4 cursor-pointer
@@ -74,7 +59,7 @@ export default function ProjectsSection() {
             <div className="p-6 md:p-12 lg:p-14 w-full h-full min-h-[450px]">
               <AnimatePresence mode="wait">
                 <motion.div
-                  key={activeProject.id}
+                  key={activeProject._id}
                   initial={{ y: 20, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
                   exit={{ y: -20, opacity: 0 }}
@@ -82,12 +67,12 @@ export default function ProjectsSection() {
                   className="flex flex-col items-start w-full h-full justify-center relative z-10"
                 >
                   <div className="flex items-center gap-3 mb-6 bg-foreground/10 py-2 px-3 md:px-4 rounded-none border border-muted/20">
-                    <activeProject.icon
+                    <Code
                       className="text-secondary w-4 h-4 md:w-5 md:h-5"
                       strokeWidth={2}
                     />
                     <span className="font-headline text-[10px] md:text-xs tracking-widest uppercase text-secondary font-semibold">
-                      {activeProject.tag}
+                      {activeProject.category_tag}
                     </span>
                   </div>
 
@@ -96,12 +81,17 @@ export default function ProjectsSection() {
                   </h3>
 
                   <p className="font-body text-sm md:text-base lg:text-xl text-muted mb-10 max-w-xl leading-relaxed">
-                    {activeProject.description}
+                    {activeProject.short_description}
                   </p>
 
-                  <button type="button" className="w-full sm:w-auto text-center rounded-none bg-primary/20 text-primary font-headline font-semibold text-xs md:text-sm px-6 py-4 md:px-8 md:py-4 uppercase tracking-[0.15em] transition-all duration-300 hover:brightness-110 shadow-[0_0_20px_rgba(130,170,255,0.1)]">
+                  <a 
+                    href={activeProject.github_url || "#"}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full sm:w-auto text-center rounded-none bg-primary/20 text-primary font-headline font-semibold text-xs md:text-sm px-6 py-4 md:px-8 md:py-4 uppercase tracking-[0.15em] transition-all duration-300 hover:brightness-110 shadow-[0_0_20px_rgba(130,170,255,0.1)]"
+                  >
                     View Architecture →
-                  </button>
+                  </a>
                 </motion.div>
               </AnimatePresence>
             </div>

@@ -3,7 +3,12 @@
 import React, { useState } from "react";
 import { Mail, MapPin } from "lucide-react";
 
-export default function ContactSection({ data }: { data?: any }) {
+export interface SiteSettings {
+  contactEmail: string;
+  location: string;
+}
+
+export default function ContactSection({ data }: { data?: SiteSettings }) {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState("");

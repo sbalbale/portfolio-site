@@ -3,31 +3,18 @@
 import React from "react";
 import { TracingBeam } from "@/components/ui/tracing-beam";
 
-const experienceData = [
-  {
-    company: "Sonos",
-    role: "Embedded Systems Intern",
-    date: "Summer 2026",
-    description:
-      "Developing core audio processing firmware and optimizing kernel performance for next-generation hardware architectures.",
-  },
-  {
-    company: "Bullhorn",
-    role: "Software Engineer Intern",
-    date: "Summer 2025",
-    description:
-      "Architecting scalable cloud microservices and optimizing data ingestion pipelines for enterprise-grade CRM systems.",
-  },
-  {
-    company: "Trinity College",
-    role: "Teaching Assistant & Lead Dev",
-    date: "2023 — Present",
-    description:
-      "Mentoring students in Data Structures and Algorithms while maintaining department-wide academic resource systems.",
-  },
-];
+export interface Experience {
+  _id: string;
+  company: string;
+  role: string;
+  timeline: string;
+  description: string;
+}
 
-export default function ExperienceSection() {
+export default function ExperienceSection({ data }: { data?: Experience[] }) {
+  const experiences = data || [];
+  
+  if (!experiences.length) return null;
   return (
     <section className="min-h-screen w-full flex flex-col justify-center bg-background pt-32 pb-48 px-6 md:px-16 lg:px-32 relative overflow-hidden">
       <div className="max-w-4xl mx-auto relative z-10">
@@ -37,13 +24,13 @@ export default function ExperienceSection() {
 
         <TracingBeam className="pl-6 md:pl-12">
           <div className="flex flex-col gap-12 md:gap-20 relative">
-            {experienceData.map((exp, index) => (
-              <div key={index} className="flex flex-col relative group">
+            {experiences.map((exp, index) => (
+              <div key={exp._id || index} className="flex flex-col relative group">
                 <div className="absolute -left-6 md:-left-12 top-1 h-3 w-3 bg-foreground/5 border border-primary rounded-none transition-colors duration-500 group-hover:bg-primary shadow-[0_0_10px_rgba(130,170,255,0)] group-hover:shadow-[0_0_15px_rgba(130,170,255,0.6)] transform -translate-x-1/2 mt-1" />
 
                 <div className="flex-1 pl-4 md:pl-0">
                   <span className="font-headline text-xs md:text-sm text-muted mb-2 block tracking-widest uppercase">
-                    {exp.date}
+                    {exp.timeline}
                   </span>
 
                   <h3 className="font-headline text-2xl md:text-3xl font-bold text-primary mb-2 md:mb-1">

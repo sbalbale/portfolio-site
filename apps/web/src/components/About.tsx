@@ -1,6 +1,13 @@
 import React from "react";
 
-export default function AboutSection({ data }: { data?: any }) {
+export interface AboutData {
+  heading: string;
+  subheading: string;
+  primaryStatement: string;
+  bodyParagraphs: string[];
+}
+
+export default function AboutSection({ data }: { data?: AboutData }) {
   const heading = data?.heading || "About";
   const subheading = data?.subheading || "Philosophy";
   const primaryStatement =

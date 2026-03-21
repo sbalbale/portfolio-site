@@ -11,34 +11,51 @@ import {
   getAboutQuery,
   getSkillsQuery,
   getSiteSettingsQuery,
+  getExperiencesQuery,
+  getProjectsQuery,
+  getResearchQuery,
+  getContactQuery
 } from "../../lib/queries";
 
-export const revalidate = 60; // ISR revalidation
+export const revalidate = 10; // ISR revalidation
 
 export default async function Home() {
-  const [heroData, aboutData, skillsData, siteSettings] = await Promise.all([
+  const [
+    heroData,
+    aboutData,
+    skillsData,
+    siteSettings,
+    experienceData,
+    projectsData,
+    researchData,
+    contactData
+  ] = await Promise.all([
     client.fetch(getHeroQuery).catch(() => null),
     client.fetch(getAboutQuery).catch(() => null),
     client.fetch(getSkillsQuery).catch(() => null),
     client.fetch(getSiteSettingsQuery).catch(() => null),
+    client.fetch(getExperiencesQuery).catch(() => []),
+    client.fetch(getProjectsQuery).catch(() => []),
+    client.fetch(getResearchQuery).catch(() => []),
+    client.fetch(getContactQuery).catch(() => null)
   ]);
 
   return (
     <main className="flex flex-col">
       <div id="hero">
-        <HeroSection data={heroData} />
+        <HeroSection data={heroData} settings={siteSettings} />
       </div>
       <div id="about">
         <AboutSection data={aboutData} />
       </div>
       <div id="experience">
-        <ExperienceSection />
+        <ExperienceSection data={experienceData} />
       </div>
       <div id="projects">
-        <ProjectsSection />
+        <ProjectsSection data={projectsData} />
       </div>
       <div id="research">
-        <ResearchSection />
+        <ResearchSection data={researchData} />
       </div>
       <div id="skills">
         <SkillsSection data={skillsData} />

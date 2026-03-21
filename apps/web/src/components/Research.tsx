@@ -2,7 +2,18 @@ import React from "react";
 import Link from "next/link";
 import { FileText } from "lucide-react";
 
-export default function ResearchSection() {
+export interface Research {
+  _id: string;
+  title: string;
+  subtitle: string;
+  abstract: string;
+  publication_status: string;
+  paper_url: string;
+}
+
+export default function ResearchSection({ data }: { data?: Research[] }) {
+  const featured = data?.[0];
+  if (!featured) return null;
   return (
     <section className="min-h-screen w-full flex flex-col justify-center bg-background pt-32 pb-48 px-4 md:px-16 lg:px-32 items-center relative overflow-hidden">
       <div className="w-full max-w-6xl relative z-10">
@@ -13,22 +24,19 @@ export default function ResearchSection() {
             </span>
 
             <h2 className="font-headline text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter text-foreground mb-6 md:mb-8 leading-tight">
-              Embodied Harms and Inferred Data:
+              {featured.title}
               <br />
               <span className="text-muted">
-                Redefining Privacy in Extended Reality
+                {featured.subtitle}
               </span>
             </h2>
 
             <p className="font-body text-sm sm:text-base md:text-lg lg:text-xl text-muted max-w-3xl mb-10 md:mb-12 leading-relaxed">
-              Investigating the ethical implications and technical
-              vulnerabilities of biometric data inference in XR environments.
-              This research proposes a new architectural framework for
-              user-centric data sovereignty.
+              {featured.abstract}
             </p>
 
             <Link
-              href="#"
+              href={featured.paper_url || "#"}
               className="w-full md:w-auto flex items-center justify-center gap-3 rounded-none bg-primary/20 text-primary font-headline text-xs md:text-sm font-semibold px-6 py-4 md:px-8 md:py-4 uppercase tracking-[0.15em] transition-all duration-300 hover:brightness-110 shadow-[0_0_15px_rgba(130,170,255,0.05)] hover:shadow-[0_0_20px_rgba(130,170,255,0.15)]"
             >
               <FileText className="w-4 h-4 md:w-5 md:h-5" />
