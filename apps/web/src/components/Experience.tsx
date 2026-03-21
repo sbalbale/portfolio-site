@@ -8,19 +8,22 @@ const experienceData = [
     company: "Sonos",
     role: "Embedded Systems Intern",
     date: "Summer 2026",
-    description: "Developing core audio processing firmware and optimizing kernel performance for next-generation hardware architectures.",
+    description:
+      "Developing core audio processing firmware and optimizing kernel performance for next-generation hardware architectures.",
   },
   {
     company: "Bullhorn",
     role: "Software Engineer Intern",
     date: "Summer 2025",
-    description: "Architecting scalable cloud microservices and optimizing data ingestion pipelines for enterprise-grade CRM systems.",
+    description:
+      "Architecting scalable cloud microservices and optimizing data ingestion pipelines for enterprise-grade CRM systems.",
   },
   {
     company: "Trinity College",
     role: "Teaching Assistant & Lead Dev",
     date: "2023 — Present",
-    description: "Mentoring students in Data Structures and Algorithms while maintaining department-wide academic resource systems.",
+    description:
+      "Mentoring students in Data Structures and Algorithms while maintaining department-wide academic resource systems.",
   },
 ];
 
@@ -42,15 +45,15 @@ export default function ExperienceSection() {
                   <span className="font-headline text-xs md:text-sm text-outline mb-2 block tracking-widest uppercase">
                     {exp.date}
                   </span>
-                  
+
                   <h3 className="font-headline text-2xl md:text-3xl font-bold text-primary mb-2 md:mb-1">
                     {exp.company}
                   </h3>
-                  
+
                   <h4 className="font-headline text-xs md:text-sm tracking-widest uppercase text-on-surface-variant mb-4 md:mb-6">
                     {exp.role}
                   </h4>
-                  
+
                   <p className="font-body text-sm md:text-base lg:text-lg text-on-surface-variant max-w-md leading-relaxed">
                     {exp.description}
                   </p>

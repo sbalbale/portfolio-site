@@ -6,9 +6,14 @@ import ResearchSection from "@/components/Research";
 import SkillsSection from "@/components/Skills";
 import ContactSection from "@/components/Contact";
 import { client } from "../../lib/sanity";
-import { getHeroQuery, getAboutQuery, getSkillsQuery, getSiteSettingsQuery } from "../../lib/queries";
+import {
+  getHeroQuery,
+  getAboutQuery,
+  getSkillsQuery,
+  getSiteSettingsQuery,
+} from "../../lib/queries";
 
-export const revalidate = 60; // ISR revalidation 
+export const revalidate = 60; // ISR revalidation
 
 export default async function Home() {
   const [heroData, aboutData, skillsData, siteSettings] = await Promise.all([

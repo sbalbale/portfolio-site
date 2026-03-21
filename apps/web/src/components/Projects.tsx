@@ -10,22 +10,25 @@ const projects = [
     title: "Three Idiots",
     tag: "Hardware + Soft",
     icon: Cpu,
-    description: "A custom-built embedded system designed for synchronized multi-agent robotic communication."
+    description:
+      "A custom-built embedded system designed for synchronized multi-agent robotic communication.",
   },
   {
     id: "ai-coach",
     title: "AI Athletic Coach",
     tag: "Computer Vision",
     icon: Activity,
-    description: "Deep learning platform utilizing pose estimation to provide real-time biomechanical feedback for athletes."
+    description:
+      "Deep learning platform utilizing pose estimation to provide real-time biomechanical feedback for athletes.",
   },
   {
     id: "trinity-acapella",
     title: "Trinity Accidentals",
     tag: "Web Development",
     icon: Code,
-    description: "Digital portal for Trinity's premier a cappella group, featuring media streaming and scheduling integrations."
-  }
+    description:
+      "Digital portal for Trinity's premier a cappella group, featuring media streaming and scheduling integrations.",
+  },
 ];
 
 export default function ProjectsSection() {
@@ -45,7 +48,6 @@ export default function ProjectsSection() {
         </div>
 
         <div className="flex flex-col lg:grid lg:grid-cols-12 gap-8 lg:gap-12">
-          
           {/* Scrollable horizontal flex row on mobile, rigid vertical list on desktop */}
           <div className="lg:col-span-4 flex flex-row lg:flex-col gap-2 overflow-x-auto pb-4 lg:pb-0 [&::-webkit-scrollbar]:hidden scroll-smooth">
             {projects.map((project, index) => {
@@ -55,9 +57,10 @@ export default function ProjectsSection() {
                   key={project.id}
                   onClick={() => setActiveIndex(index)}
                   className={`flex-shrink-0 lg:w-full text-left rounded-none px-6 py-4 md:py-5 transition-all duration-300 font-headline uppercase tracking-widest text-xs md:text-sm font-semibold border-b-4 lg:border-b-0 lg:border-l-4
-                    ${isActive 
-                      ? "bg-surface-container-high border-secondary text-primary" 
-                      : "bg-transparent border-transparent text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low"
+                    ${
+                      isActive
+                        ? "bg-surface-container-high border-secondary text-primary"
+                        : "bg-transparent border-transparent text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low"
                     }`}
                 >
                   {project.title}
@@ -77,7 +80,10 @@ export default function ProjectsSection() {
                 className="flex flex-col items-start w-full relative z-10"
               >
                 <div className="flex items-center gap-3 mb-6 bg-surface-container-high py-2 px-3 md:px-4 rounded-none border border-outline/10">
-                  <activeProject.icon className="text-secondary w-4 h-4 md:w-5 md:h-5" strokeWidth={2} />
+                  <activeProject.icon
+                    className="text-secondary w-4 h-4 md:w-5 md:h-5"
+                    strokeWidth={2}
+                  />
                   <span className="font-headline text-[10px] md:text-xs tracking-widest uppercase text-secondary font-semibold">
                     {activeProject.tag}
                   </span>

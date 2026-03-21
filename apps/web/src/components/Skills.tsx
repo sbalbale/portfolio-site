@@ -2,15 +2,30 @@ import React from "react";
 import { Cpu, Terminal, Cloud } from "lucide-react";
 
 export default function SkillsSection({ data }: { data?: any }) {
-  const hardwareSkills = data?.hardwareSkills || ["FPGA (Verilog)", "PCB Design (Altium)", "ARM Cortex-M", "Signal Processing"];
-  const softwareSkills = data?.softwareSkills || ["C++ / Embedded C", "Rust (Safe Systems)", "Python / ML Stack", "Distributed Systems"];
-  const cloudSkills = data?.cloudSkills || ["AWS Architecture", "Kubernetes / Docker", "CI/CD Automation", "Terraform"];
-  
+  const hardwareSkills = data?.hardwareSkills || [
+    "FPGA (Verilog)",
+    "PCB Design (Altium)",
+    "ARM Cortex-M",
+    "Signal Processing",
+  ];
+  const softwareSkills = data?.softwareSkills || [
+    "C++ / Embedded C",
+    "Rust (Safe Systems)",
+    "Python / ML Stack",
+    "Distributed Systems",
+  ];
+  const cloudSkills = data?.cloudSkills || [
+    "AWS Architecture",
+    "Kubernetes / Docker",
+    "CI/CD Automation",
+    "Terraform",
+  ];
+
   const telemetry = data?.telemetry || [
     { percentage: 60 },
     { percentage: 20 },
     { percentage: 15 },
-    { percentage: 5 }
+    { percentage: 5 },
   ];
 
   return (
@@ -39,7 +54,7 @@ export default function SkillsSection({ data }: { data?: any }) {
               ))}
             </ul>
           </div>
-          
+
           <div className="bg-surface p-8 md:p-12 rounded-none border-t-2 border-secondary hover:bg-surface-container transition-colors duration-300 shadow-lg">
             <div className="flex items-center gap-4 mb-6 md:mb-8">
               <Terminal className="w-6 h-6 text-secondary" strokeWidth={2.5} />
@@ -80,22 +95,34 @@ export default function SkillsSection({ data }: { data?: any }) {
             Language & Framework Distribution
           </h4>
           <div className="w-full flex flex-row h-12 md:h-6 bg-surface overflow-hidden group">
-            <div className="bg-primary relative transition-all duration-300 hover:brightness-125" style={{ width: `${telemetry[0]?.percentage || 60}%` }}>
+            <div
+              className="bg-primary relative transition-all duration-300 hover:brightness-125"
+              style={{ width: `${telemetry[0]?.percentage || 60}%` }}
+            >
               <span className="absolute -top-7 left-1 md:left-2 opacity-0 group-hover:opacity-100 font-headline text-[10px] md:text-xs text-primary font-bold transition-opacity">
                 {telemetry[0]?.percentage || 60}%
               </span>
             </div>
-            <div className="bg-secondary relative transition-all duration-300 hover:brightness-125" style={{ width: `${telemetry[1]?.percentage || 20}%` }}>
+            <div
+              className="bg-secondary relative transition-all duration-300 hover:brightness-125"
+              style={{ width: `${telemetry[1]?.percentage || 20}%` }}
+            >
               <span className="absolute -top-7 left-1 md:left-2 opacity-0 group-hover:opacity-100 font-headline text-[10px] md:text-xs text-secondary font-bold transition-opacity">
                 {telemetry[1]?.percentage || 20}%
               </span>
             </div>
-            <div className="bg-tertiary relative transition-all duration-300 hover:brightness-125" style={{ width: `${telemetry[2]?.percentage || 15}%` }}>
+            <div
+              className="bg-tertiary relative transition-all duration-300 hover:brightness-125"
+              style={{ width: `${telemetry[2]?.percentage || 15}%` }}
+            >
               <span className="absolute -top-7 left-1 md:left-2 opacity-0 group-hover:opacity-100 font-headline text-[10px] md:text-xs text-tertiary font-bold transition-opacity">
                 {telemetry[2]?.percentage || 15}%
               </span>
             </div>
-            <div className="bg-error relative transition-all duration-300 hover:brightness-125" style={{ width: `${telemetry[3]?.percentage || 5}%` }}>
+            <div
+              className="bg-error relative transition-all duration-300 hover:brightness-125"
+              style={{ width: `${telemetry[3]?.percentage || 5}%` }}
+            >
               <span className="absolute -top-7 right-0 opacity-0 group-hover:opacity-100 font-headline text-[10px] md:text-xs text-error font-bold pr-1 transition-opacity">
                 {telemetry[3]?.percentage || 5}%
               </span>
