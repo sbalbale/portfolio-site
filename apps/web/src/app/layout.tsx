@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
-import Link from "next/link";
 import { Github, Linkedin } from "lucide-react";
+import Navbar from "@/components/Navbar";
 
 const inter = Inter({
   variable: "--font-body",
@@ -19,15 +19,6 @@ export const metadata: Metadata = {
   description: "B.S. Computer Science & B.S. Electrical Engineering. Bridging the gap between physical systems and high-level computation.",
 };
 
-const navItems = [
-  { name: "About", href: "#hero" },
-  { name: "Experience", href: "#experience" },
-  { name: "Projects", href: "#projects" },
-  { name: "Research", href: "#research" },
-  { name: "Skills", href: "#skills" },
-  { name: "Contact", href: "#contact" },
-];
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -40,32 +31,15 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col bg-surface text-on-surface">
         
-        {/* Global Top Navbar */}
-        <header className="fixed top-0 w-full z-50 bg-[#131313]/80 backdrop-blur-xl rounded-none border-b border-outline/10">
-          <div className="max-w-7xl mx-auto px-6 md:px-12 h-20 flex items-center justify-between">
-            <Link href="/" className="font-headline font-bold text-xl tracking-widest text-on-surface uppercase pr-4">
-              SB<span className="text-secondary">.</span>
-            </Link>
-            <nav className="hidden md:flex items-center gap-8">
-              {navItems.map((item) => (
-                <a 
-                  key={item.name} 
-                  href={item.href} 
-                  className="font-headline text-xs tracking-[0.2em] uppercase text-on-surface-variant hover:text-primary transition-colors font-semibold"
-                >
-                  {item.name}
-                </a>
-              ))}
-            </nav>
-          </div>
-        </header>
+        {/* Dynamic Global Navbar */}
+        <Navbar />
 
         {children}
 
         {/* Global Footer */}
-        <footer className="w-full border-t border-outline/30 bg-surface py-12 px-6 md:px-12 mt-auto">
+        <footer className="w-full border-t border-outline/30 bg-surface py-12 px-6 md:px-12 mt-auto relative z-10">
           <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
-            <div className="font-headline text-xs tracking-widest text-on-surface-variant uppercase">
+            <div className="font-headline text-xs tracking-widest text-on-surface-variant uppercase text-center md:text-left">
               © {new Date().getFullYear()} SEAN BALBALE. SECURE TRANSMISSION.
             </div>
             <div className="flex items-center gap-6">
