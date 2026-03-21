@@ -18,8 +18,8 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: "Sean Balbale | Aspiring Software/Embedded Systems Engineer",
-  description: "",
+  title: "Sean Balbale | Portfolio",
+  description: "Portfolio and architectural web deployment for Sean Balbale.",
 };
 
 export default async function RootLayout({
