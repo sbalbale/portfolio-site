@@ -51,7 +51,7 @@ export default function Navbar() {
   };
 
   return (
-    <header className="fixed top-0 w-full z-50 bg-surface/90 backdrop-blur-xl border-b border-outline/10 rounded-none transition-all">
+    <header className="fixed top-0 w-full z-50 bg-background/90 backdrop-blur-xl border-b border-muted/10 rounded-none transition-all">
       {/* 1. Global Scroll Progress Bar */}
       <motion.div
         className="absolute top-0 left-0 right-0 h-[2px] bg-primary origin-left z-[60] pointer-events-none"
@@ -62,7 +62,7 @@ export default function Navbar() {
         <Link
           href="/"
           onClick={() => setMobileMenuOpen(false)}
-          className="font-headline font-bold text-xl tracking-widest text-on-surface uppercase pr-4 flex items-center"
+          className="font-headline font-bold text-xl tracking-widest text-foreground uppercase pr-4 flex items-center"
         >
           SB<span className="text-secondary">.</span>
         </Link>
@@ -77,7 +77,7 @@ export default function Navbar() {
                   key={item.name}
                   href={item.href}
                   className={`font-headline text-xs tracking-[0.2em] uppercase transition-colors font-semibold flex items-center gap-2
-                    ${isActive ? "text-primary" : "text-on-surface-variant hover:text-on-surface"}
+                    ${isActive ? "text-primary" : "text-muted hover:text-foreground"}
                   `}
                 >
                   {isActive && (
@@ -90,10 +90,10 @@ export default function Navbar() {
           </nav>
 
           {/* Hardware Theme Toggle - Desktop */}
-          <div className="border-l border-outline/30 pl-8 flex items-center">
+          <div className="border-l border-muted/30 pl-8 flex items-center">
             <button
               onClick={toggleTheme}
-              className="flex items-center justify-center p-2 rounded-none border-2 border-outline/30 hover:bg-surface-container-highest transition-colors text-on-surface"
+              className="flex items-center justify-center p-2 rounded-none border-2 border-muted/30 hover:bg-foreground/10 transition-colors text-foreground"
               aria-label="Toggle Theme"
             >
               {mounted ? (
@@ -114,7 +114,7 @@ export default function Navbar() {
           {/* Hardware Theme Toggle - Mobile */}
           <button
             onClick={toggleTheme}
-            className="flex items-center justify-center p-2 rounded-none border-2 border-outline/30 hover:bg-surface-container-highest transition-colors text-on-surface"
+            className="flex items-center justify-center p-2 rounded-none border-2 border-muted/30 hover:bg-foreground/10 transition-colors text-foreground"
             aria-label="Toggle Theme"
           >
             {mounted ? (
@@ -128,7 +128,7 @@ export default function Navbar() {
             )}
           </button>
           <button
-            className="text-on-surface p-2 focus:outline-none"
+            className="text-foreground p-2 focus:outline-none"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Toggle menu"
           >
@@ -148,7 +148,7 @@ export default function Navbar() {
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            className="md:hidden bg-surface/95 backdrop-blur-3xl overflow-hidden border-b border-outline/10 absolute top-20 left-0 w-full"
+            className="md:hidden bg-background/95 backdrop-blur-3xl overflow-hidden border-b border-muted/10 absolute top-20 left-0 w-full"
           >
             <nav className="flex flex-col px-6 py-8 gap-8">
               {navItems.map((item) => {
@@ -159,7 +159,7 @@ export default function Navbar() {
                     href={item.href}
                     onClick={() => setMobileMenuOpen(false)}
                     className={`font-headline text-lg tracking-[0.2em] uppercase font-bold flex items-center gap-3 transition-colors
-                      ${isActive ? "text-primary" : "text-on-surface-variant hover:text-on-surface"}
+                      ${isActive ? "text-primary" : "text-muted hover:text-foreground"}
                     `}
                   >
                     {isActive && (

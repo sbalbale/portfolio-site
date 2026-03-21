@@ -17,11 +17,11 @@ export default function HeroSection({ data }: { data?: any }) {
           {label}
         </span>
         
-        <h1 className="font-headline text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-bold text-on-surface tracking-tighter leading-none mb-6">
+        <h1 className="font-headline text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-bold text-foreground tracking-tighter leading-none mb-6">
           {headline}
         </h1>
         
-        <p className="font-body text-base md:text-lg lg:text-xl text-on-surface-variant max-w-2xl mb-10 md:mb-12 leading-relaxed">
+        <p className="font-body text-base md:text-lg lg:text-xl text-muted max-w-2xl mb-10 md:mb-12 leading-relaxed">
           {subtitle}
         </p>
         
@@ -30,7 +30,7 @@ export default function HeroSection({ data }: { data?: any }) {
             href={resumeUrl}
             target="_blank"
             rel="noreferrer"
-            className="w-full sm:w-auto text-center rounded-none bg-primary-container text-on-primary-container font-headline text-sm font-semibold px-8 py-4 md:py-5 uppercase tracking-[0.15em] transition-all duration-300 hover:brightness-110"
+            className="w-full sm:w-auto text-center rounded-none bg-primary/20 text-primary font-headline text-sm font-semibold px-8 py-4 md:py-5 uppercase tracking-[0.15em] transition-all duration-300 hover:brightness-110"
           >
             View Resume
           </Link>
@@ -39,14 +39,14 @@ export default function HeroSection({ data }: { data?: any }) {
             href={githubUrl}
             target="_blank"
             rel="noreferrer"
-            className="w-full sm:w-auto text-center rounded-none border border-outline/30 bg-transparent text-on-surface font-headline text-sm font-semibold px-8 py-4 md:py-5 uppercase tracking-[0.15em] transition-colors duration-300 hover:bg-surface-container-highest"
+            className="w-full sm:w-auto text-center rounded-none border border-muted/30 bg-transparent text-foreground font-headline text-sm font-semibold px-8 py-4 md:py-5 uppercase tracking-[0.15em] transition-colors duration-300 hover:bg-foreground/10"
           >
             GitHub
           </Link>
         </div>
       </div>
 
-      <div className="absolute right-6 md:right-16 lg:right-32 top-0 h-full w-1 md:w-2 bg-outline/20 pointer-events-none hidden md:flex">
+      <div className="absolute right-6 md:right-16 lg:right-32 top-0 h-full w-1 md:w-2 bg-muted/20 pointer-events-none hidden md:flex">
         <motion.div 
           className="w-full bg-primary absolute top-1/3"
           style={{ height: "40vh" }}

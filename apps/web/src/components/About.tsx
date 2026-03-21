@@ -12,12 +12,12 @@ export default function AboutSection({ data }: { data?: any }) {
   ];
 
   return (
-    <section className="bg-surface-container-low pt-32 pb-48 px-6 md:px-16 lg:px-32 relative">
+    <section className="bg-foreground/5 pt-32 pb-48 px-6 md:px-16 lg:px-32 relative">
       <div className="max-w-6xl mx-auto flex flex-col md:grid md:grid-cols-12 gap-12 md:gap-16">
         {/* Left Column (Sticky Top Tracker) */}
         <div className="md:col-span-4 relative">
           <div className="md:sticky md:top-32">
-            <h2 className="font-headline text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter uppercase text-on-surface leading-tight md:leading-none">
+            <h2 className="font-headline text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter uppercase text-foreground leading-tight md:leading-none">
               {heading}
               <br />
               <span className="text-primary tracking-tighter">
@@ -29,7 +29,7 @@ export default function AboutSection({ data }: { data?: any }) {
 
         {/* Right Column (Content Matrix) */}
         <div className="md:col-span-8 flex flex-col">
-          <p className="font-headline text-2xl md:text-3xl lg:text-4xl font-light leading-snug md:leading-relaxed text-on-surface mb-8">
+          <p className="font-headline text-2xl md:text-3xl lg:text-4xl font-light leading-snug md:leading-relaxed text-foreground mb-8">
             {primaryStatement}
           </p>
 
@@ -37,7 +37,7 @@ export default function AboutSection({ data }: { data?: any }) {
             {bodyParagraphs.map((paragraph: string, index: number) => (
               <p
                 key={index}
-                className="font-body text-base md:text-lg lg:text-xl text-on-surface-variant leading-relaxed"
+                className="font-body text-base md:text-lg lg:text-xl text-muted leading-relaxed"
               >
                 {paragraph}
               </p>

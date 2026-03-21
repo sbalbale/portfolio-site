@@ -31,7 +31,7 @@ export default function ExperienceSection() {
   return (
     <section className="min-h-screen bg-background pt-32 pb-48 px-6 md:px-16 lg:px-32 relative overflow-hidden">
       <div className="max-w-4xl mx-auto relative z-10">
-        <h2 className="font-headline text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter text-on-surface mb-16 md:mb-24 uppercase">
+        <h2 className="font-headline text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter text-foreground mb-16 md:mb-24 uppercase">
           EXPERIENCE.
         </h2>
 
@@ -39,10 +39,10 @@ export default function ExperienceSection() {
           <div className="flex flex-col gap-12 md:gap-20 relative">
             {experienceData.map((exp, index) => (
               <div key={index} className="flex flex-col relative group">
-                <div className="absolute -left-6 md:-left-12 top-1 h-3 w-3 bg-surface-container-low border border-primary rounded-none transition-colors duration-500 group-hover:bg-primary shadow-[0_0_10px_rgba(130,170,255,0)] group-hover:shadow-[0_0_15px_rgba(130,170,255,0.6)] transform -translate-x-1/2 mt-1" />
+                <div className="absolute -left-6 md:-left-12 top-1 h-3 w-3 bg-foreground/5 border border-primary rounded-none transition-colors duration-500 group-hover:bg-primary shadow-[0_0_10px_rgba(130,170,255,0)] group-hover:shadow-[0_0_15px_rgba(130,170,255,0.6)] transform -translate-x-1/2 mt-1" />
 
                 <div className="flex-1 pl-4 md:pl-0">
-                  <span className="font-headline text-xs md:text-sm text-outline mb-2 block tracking-widest uppercase">
+                  <span className="font-headline text-xs md:text-sm text-muted mb-2 block tracking-widest uppercase">
                     {exp.date}
                   </span>
 
@@ -50,11 +50,11 @@ export default function ExperienceSection() {
                     {exp.company}
                   </h3>
 
-                  <h4 className="font-headline text-xs md:text-sm tracking-widest uppercase text-on-surface-variant mb-4 md:mb-6">
+                  <h4 className="font-headline text-xs md:text-sm tracking-widest uppercase text-muted mb-4 md:mb-6">
                     {exp.role}
                   </h4>
 
-                  <p className="font-body text-sm md:text-base lg:text-lg text-on-surface-variant max-w-md leading-relaxed">
+                  <p className="font-body text-sm md:text-base lg:text-lg text-muted max-w-md leading-relaxed">
                     {exp.description}
                   </p>
                 </div>

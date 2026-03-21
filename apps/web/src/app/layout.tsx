@@ -31,7 +31,7 @@ export default function RootLayout({
       className={`${inter.variable} ${spaceGrotesk.variable} h-full antialiased scroll-smooth`}
       suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col bg-surface text-on-surface">
+      <body className="min-h-full flex flex-col bg-background text-foreground">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           {/* Dynamic Global Navbar */}
           <Navbar />
@@ -39,16 +39,16 @@ export default function RootLayout({
           {children}
 
           {/* Global Footer */}
-          <footer className="w-full border-t border-outline/30 bg-surface py-12 px-6 md:px-12 mt-auto relative z-10">
+          <footer className="w-full border-t border-muted/30 bg-background py-12 px-6 md:px-12 mt-auto relative z-10">
             <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
-              <div className="font-headline text-xs tracking-widest text-on-surface-variant uppercase text-center md:text-left">
+              <div className="font-headline text-xs tracking-widest text-muted uppercase text-center md:text-left">
                 © {new Date().getFullYear()} SEAN BALBALE. SECURE TRANSMISSION.
               </div>
               <div className="flex items-center gap-6">
-                <a href="https://github.com/seanbalbale" target="_blank" rel="noreferrer" className="text-on-surface-variant hover:text-primary transition-colors">
+                <a href="https://github.com/seanbalbale" target="_blank" rel="noreferrer" className="text-muted hover:text-primary transition-colors">
                   <Github className="w-5 h-5" />
                 </a>
-                <a href="https://linkedin.com/in/seanbalbale" target="_blank" rel="noreferrer" className="text-on-surface-variant hover:text-primary transition-colors">
+                <a href="https://linkedin.com/in/seanbalbale" target="_blank" rel="noreferrer" className="text-muted hover:text-primary transition-colors">
                   <Linkedin className="w-5 h-5" />
                 </a>
               </div>
