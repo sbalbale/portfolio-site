@@ -18,8 +18,8 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: "Sean Balbale | Engineer & Architect",
-  description: "B.S. Computer Science & B.S. Electrical Engineering. Bridging the gap between physical systems and high-level computation.",
+  title: "Sean Balbale | Aspiring Software/Embedded Systems Engineer",
+  description: "",
 };
 
 export default async function RootLayout({
@@ -28,9 +28,12 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const settings = await client.fetch(getSiteSettingsQuery).catch(() => null);
-  const copyrightText = settings?.copyrightText || `© ${new Date().getFullYear()} SEAN BALBALE. SECURE TRANSMISSION.`;
+  const copyrightText =
+    settings?.copyrightText ||
+    `© ${new Date().getFullYear()} SEAN BALBALE. SECURE TRANSMISSION.`;
   const githubUrl = settings?.githubUrl || "https://github.com/seanbalbale";
-  const linkedinUrl = settings?.linkedinUrl || "https://linkedin.com/in/seanbalbale";
+  const linkedinUrl =
+    settings?.linkedinUrl || "https://linkedin.com/in/seanbalbale";
 
   return (
     <html
@@ -53,12 +56,22 @@ export default async function RootLayout({
               </div>
               <div className="flex items-center gap-6">
                 {githubUrl && (
-                  <a href={githubUrl} target="_blank" rel="noreferrer" className="text-muted hover:text-primary transition-colors">
+                  <a
+                    href={githubUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-muted hover:text-primary transition-colors"
+                  >
                     <Github className="w-5 h-5" />
                   </a>
                 )}
                 {linkedinUrl && (
-                  <a href={linkedinUrl} target="_blank" rel="noreferrer" className="text-muted hover:text-primary transition-colors">
+                  <a
+                    href={linkedinUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-muted hover:text-primary transition-colors"
+                  >
                     <Linkedin className="w-5 h-5" />
                   </a>
                 )}

@@ -11,6 +11,7 @@ const navItems = [
   { name: "Projects", id: "projects", href: "#projects" },
   { name: "Research", id: "research", href: "#research" },
   { name: "Skills", id: "skills", href: "#skills" },
+  { name: "Resume", id: "resume", href: "/resume", isPage: true },
   { name: "Contact", id: "contact", href: "#contact" },
 ];
 
@@ -92,7 +93,7 @@ export default function Navbar() {
                 <a
                   key={item.name}
                   href={item.href}
-                  onClick={(e) => handleScroll(e, item.href)}
+                  onClick={item.isPage ? undefined : (e) => handleScroll(e, item.href)}
                   className={`font-headline text-xs tracking-[0.2em] uppercase transition-colors font-semibold flex items-center gap-2 cursor-pointer
                     ${isActive ? "text-primary" : "text-muted hover:text-foreground"}
                   `}
@@ -177,7 +178,7 @@ export default function Navbar() {
                   <a
                     key={item.name}
                     href={item.href}
-                    onClick={(e) => handleScroll(e, item.href)}
+                    onClick={item.isPage ? () => setMobileMenuOpen(false) : (e) => handleScroll(e, item.href)}
                     className={`font-headline text-lg tracking-[0.2em] uppercase font-bold flex items-center gap-3 transition-colors cursor-pointer
                       ${isActive ? "text-primary" : "text-muted hover:text-foreground"}
                     `}
