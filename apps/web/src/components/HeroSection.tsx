@@ -11,7 +11,7 @@ export default function HeroSection({ data }: { data?: any }) {
   const githubUrl = data?.githubUrl || "https://github.com/seanbalbale";
 
   return (
-    <section className="relative min-h-[90vh] md:min-h-screen flex items-center bg-surface overflow-hidden px-6 pt-32 pb-24 md:px-16 md:py-0 lg:px-32">
+    <section className="relative min-h-[90vh] md:min-h-screen flex items-center bg-background overflow-hidden px-6 pt-32 pb-48 md:px-16 lg:px-32">
       <div className="z-10 flex flex-col items-start max-w-4xl w-full mt-10 md:mt-0">
         <span className="font-headline text-primary tracking-widest uppercase text-xs md:text-sm font-semibold mb-4 md:mb-6">
           {label}

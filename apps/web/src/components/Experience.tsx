@@ -29,8 +29,8 @@ const experienceData = [
 
 export default function ExperienceSection() {
   return (
-    <section className="min-h-screen bg-surface-container-low py-24 md:py-32 px-6 md:px-16 lg:px-32 relative">
-      <div className="max-w-4xl mx-auto">
+    <section className="min-h-screen bg-background pt-32 pb-48 px-6 md:px-16 lg:px-32 relative overflow-hidden">
+      <div className="max-w-4xl mx-auto relative z-10">
         <h2 className="font-headline text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter text-on-surface mb-16 md:mb-24 uppercase">
           EXPERIENCE.
         </h2>

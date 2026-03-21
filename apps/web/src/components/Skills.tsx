@@ -29,8 +29,8 @@ export default function SkillsSection({ data }: { data?: any }) {
   ];
 
   return (
-    <section className="bg-surface-container-low py-24 md:py-32 px-6 md:px-16 lg:px-32">
-      <div className="max-w-6xl mx-auto">
+    <section className="bg-surface-container-low pt-32 pb-48 px-6 md:px-16 lg:px-32 relative overflow-hidden">
+      <div className="max-w-6xl mx-auto relative z-10">
         <div className="mb-12 md:mb-20">
           <h2 className="font-headline text-4xl md:text-5xl font-bold uppercase tracking-tighter text-on-surface">
             PROFICIENCIES_

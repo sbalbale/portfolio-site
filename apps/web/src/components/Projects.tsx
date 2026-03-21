@@ -36,8 +36,8 @@ export default function ProjectsSection() {
   const activeProject = projects[activeIndex];
 
   return (
-    <section className="min-h-[80vh] md:min-h-screen bg-surface py-24 md:py-32 px-6 md:px-16 lg:px-32 relative">
-      <div className="max-w-6xl mx-auto">
+    <section className="min-h-[80vh] md:min-h-screen bg-surface-container-low pt-32 pb-48 px-6 md:px-16 lg:px-32 relative overflow-hidden">
+      <div className="max-w-6xl mx-auto relative z-10">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 md:gap-6 mb-12 md:mb-20 border-b border-outline/20 pb-6">
           <h2 className="font-headline text-4xl md:text-5xl font-bold uppercase tracking-tighter text-on-surface">
             SELECTED PROJECTS

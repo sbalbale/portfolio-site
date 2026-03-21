@@ -43,8 +43,8 @@ export default function ContactSection({ data }: { data?: any }) {
   };
 
   return (
-    <section className="bg-surface py-24 md:py-32 px-6 md:px-16 lg:px-32 border-t border-outline/10">
-      <div className="max-w-6xl mx-auto flex flex-col lg:flex-row gap-12 lg:gap-24">
+    <section className="bg-background pt-32 pb-48 px-6 md:px-16 lg:px-32 relative overflow-hidden">
+      <div className="max-w-6xl mx-auto flex flex-col lg:flex-row gap-12 lg:gap-24 relative z-10">
         {/* Left Column */}
         <div className="flex flex-col justify-center w-full lg:w-1/2">
           <h2 className="font-headline text-4xl md:text-6xl lg:text-7xl font-bold uppercase tracking-tighter text-on-surface mb-6 md:mb-8">
