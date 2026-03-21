@@ -111,7 +111,7 @@ export default function Navbar() {
             <button
               type="button"
               onClick={toggleTheme}
-              className="flex items-center justify-center p-2 rounded-none border-2 border-muted/30 hover:bg-foreground/10 transition-colors text-foreground cursor-pointer"
+              className="flex items-center justify-center p-2 rounded-none hover:bg-foreground/10 transition-colors text-foreground cursor-pointer"
               aria-label="Toggle Theme"
             >
               {mounted ? (
@@ -133,7 +133,7 @@ export default function Navbar() {
           <button
             type="button"
             onClick={toggleTheme}
-            className="flex items-center justify-center p-2 rounded-none border-2 border-muted/30 hover:bg-foreground/10 transition-colors text-foreground cursor-pointer"
+            className="flex items-center justify-center p-2 rounded-none hover:bg-foreground/10 transition-colors text-foreground cursor-pointer"
             aria-label="Toggle Theme"
           >
             {mounted ? (
