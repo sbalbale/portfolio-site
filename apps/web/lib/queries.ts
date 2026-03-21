@@ -31,3 +31,8 @@ export const getResearchQuery = groq`
     paper_url
   }
 `;
+
+// Singletons
+export const getHeroQuery = groq`*[_type == "hero"][0]`;
+export const getSkillsQuery = groq`*[_type == "skills"][0]`;
+export const getSiteSettingsQuery = groq`*[_type == "siteSettings"][0]`;

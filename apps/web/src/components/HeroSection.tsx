@@ -3,33 +3,44 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 
-export default function HeroSection() {
+export default function HeroSection({ data }: { data?: any }) {
+  // Use Sanity data or fallback to defaults if Sanity is unpopulated
+  const label = data?.label || "ENGINEER & ARCHITECT";
+  const headline = data?.headline || "SEAN BALBALE.";
+  const subtitle = data?.subtitle || "B.S. Computer Science & B.S. Electrical Engineering. Bridging the gap between physical systems and high-level computation.";
+  const resumeUrl = data?.resumeUrl || "/resume.pdf";
+  const githubUrl = data?.githubUrl || "https://github.com/seanbalbale";
+
   return (
     <section className="relative min-h-screen flex items-center bg-surface overflow-hidden px-6 md:px-16 lg:px-32">
       {/* 1. The Text Block (Left/Main) */}
       <div className="z-10 flex flex-col items-start max-w-4xl w-full">
         <span className="font-headline text-primary tracking-widest uppercase text-xs md:text-sm font-semibold mb-6">
-          ENGINEER & ARCHITECT
+          {label}
         </span>
         
         <h1 className="font-headline text-6xl md:text-8xl lg:text-9xl font-bold text-on-surface tracking-tighter leading-none mb-6">
-          SEAN BALBALE.
+          {headline}
         </h1>
         
         <p className="font-body text-lg md:text-xl text-on-surface-variant max-w-2xl mb-12 leading-relaxed">
-          B.S. Computer Science & B.S. Electrical Engineering. Bridging the gap between physical systems and high-level computation.
+          {subtitle}
         </p>
         
         <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
           <Link 
-            href="/resume.pdf"
+            href={resumeUrl}
+            target="_blank"
+            rel="noreferrer"
             className="w-full sm:w-auto text-center rounded-none bg-primary-container text-on-primary-container font-headline text-sm font-semibold px-8 py-4 uppercase tracking-[0.15em] transition-all duration-300 hover:brightness-110"
           >
             View Resume
           </Link>
           
           <Link 
-            href="https://github.com/seanbalbale"
+            href={githubUrl}
+            target="_blank"
+            rel="noreferrer"
             className="w-full sm:w-auto text-center rounded-none border border-outline/30 bg-transparent text-on-surface font-headline text-sm font-semibold px-8 py-4 uppercase tracking-[0.15em] transition-colors duration-300 hover:bg-surface-container-highest"
           >
             GitHub
