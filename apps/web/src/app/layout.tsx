@@ -4,6 +4,8 @@ import "./globals.css";
 import { Github, Linkedin } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { client } from "../../lib/sanity";
 import { getSiteSettingsQuery } from "../../lib/queries";
 
@@ -94,6 +96,8 @@ export default async function RootLayout({
             </div>
           </footer>
         </ThemeProvider>
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
