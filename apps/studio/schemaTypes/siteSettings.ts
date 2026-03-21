@@ -31,6 +31,17 @@ export default defineType({
       name: 'copyrightText',
       title: 'Footer Copyright Text',
       type: 'string',
+    }),
+    defineField({
+      name: 'name',
+      title: 'Global Site Title',
+      type: 'string',
+    }),
+    defineField({
+      name: 'resume',
+      title: 'Curriculum Vitae (PDF)',
+      type: 'file',
+      options: { accept: 'application/pdf' },
     })
   ],
 })

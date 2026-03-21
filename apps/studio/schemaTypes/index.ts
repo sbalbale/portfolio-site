@@ -5,5 +5,6 @@ import hero from './hero'
 import skills from './skills'
 import siteSettings from './siteSettings'
 import about from './about'
+import contact from './contact'
 
-export const schemaTypes = [experience, project, research, hero, skills, siteSettings, about]
+export const schemaTypes = [experience, project, research, hero, skills, siteSettings, about, contact]
