@@ -1,7 +1,7 @@
 import { groq } from "next-sanity";
 
 export const getExperiencesQuery = groq`
-  *[_type == "experience"] | order(_createdAt desc) {
+  *[_type == "experience"] | order(orderRank) {
     _id,
     company,
     role,
@@ -11,7 +11,7 @@ export const getExperiencesQuery = groq`
 `;
 
 export const getProjectsQuery = groq`
-  *[_type == "project"] | order(_createdAt desc) {
+  *[_type == "project"] | order(orderRank) {
     _id,
     title,
     category_tag,
@@ -22,7 +22,7 @@ export const getProjectsQuery = groq`
 `;
 
 export const getResearchQuery = groq`
-  *[_type == "research"] | order(_createdAt desc) {
+  *[_type == "research"] | order(orderRank) {
     _id,
     title,
     subtitle,
@@ -35,7 +35,7 @@ export const getResearchQuery = groq`
 // Singletons
 export const getHeroQuery = groq`*[_type == "hero"][0]`;
 export const getAboutQuery = groq`*[_type == "about"][0]`;
-export const getSkillsQuery = groq`*[_type == "skills"][0]`;
+export const getSkillsQuery = groq`*[_type == "skills"] | order(orderRank)[0]`;
 export const getSiteSettingsQuery = groq`*[_type == "siteSettings"][0]{
   ...,
   "resumeUrl": resume.asset->url

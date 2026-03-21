@@ -1,9 +1,11 @@
 import {defineField, defineType} from 'sanity'
+import {orderRankField, orderRankOrdering} from '@sanity/orderable-document-list'
 
 export default defineType({
   name: 'project',
   title: 'Project',
   type: 'document',
+  orderings: [orderRankOrdering],
   fields: [
     defineField({
       name: 'title',
@@ -31,5 +33,6 @@ export default defineType({
       title: 'GitHub URL',
       type: 'url',
     }),
+    orderRankField({ type: 'project' }),
   ],
 })

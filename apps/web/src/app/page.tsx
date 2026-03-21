@@ -14,7 +14,7 @@ import {
   getExperiencesQuery,
   getProjectsQuery,
   getResearchQuery,
-  getContactQuery
+  getContactQuery,
 } from "../../lib/queries";
 
 export const revalidate = 10; // ISR revalidation
@@ -28,7 +28,7 @@ export default async function Home() {
     experienceData,
     projectsData,
     researchData,
-    contactData
+    contactData,
   ] = await Promise.all([
     client.fetch(getHeroQuery).catch(() => null),
     client.fetch(getAboutQuery).catch(() => null),
@@ -37,7 +37,7 @@ export default async function Home() {
     client.fetch(getExperiencesQuery).catch(() => []),
     client.fetch(getProjectsQuery).catch(() => []),
     client.fetch(getResearchQuery).catch(() => []),
-    client.fetch(getContactQuery).catch(() => null)
+    client.fetch(getContactQuery).catch(() => null),
   ]);
 
   return (

@@ -2,6 +2,7 @@ import { defineConfig } from 'sanity'
 import { structureTool } from 'sanity/structure'
 import { visionTool } from '@sanity/vision'
 import { schemaTypes } from './schemaTypes'
+import { orderableDocumentListDeskItem } from '@sanity/orderable-document-list'
 
 // Define singletons that shouldn't be created as multiple documents
 const singletonActions = new Set(["publish", "discardChanges", "restore"])
@@ -16,7 +17,7 @@ export default defineConfig({
   plugins: [
     visionTool(),
     structureTool({
-      structure: (S) =>
+      structure: (S, context) =>
         S.list()
           .title('Architecture Data')
           .items([
@@ -41,16 +42,16 @@ export default defineConfig({
             S.divider(),
 
             // 4. Experience (List)
-            S.documentTypeListItem('experience').title('Experience'),
+            orderableDocumentListDeskItem({type: 'experience', title: 'Experience', S, context}),
             
             // 5. Projects (List)
-            S.documentTypeListItem('project').title('Projects'),
+            orderableDocumentListDeskItem({type: 'project', title: 'Projects', S, context}),
             
             // 6. Research (List)
-            S.documentTypeListItem('research').title('Research'),
+            orderableDocumentListDeskItem({type: 'research', title: 'Research', S, context}),
             
             // 7. Skills (List)
-            S.documentTypeListItem('skills').title('Skills'),
+            orderableDocumentListDeskItem({type: 'skills', title: 'Skills', S, context}),
 
             S.divider(),
 
