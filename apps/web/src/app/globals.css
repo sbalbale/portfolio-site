@@ -8,7 +8,11 @@
   --color-on-primary: #002e6b;
   --color-primary-container: #82AAFF;
   --color-on-primary-container: #002e6b;
+  --color-secondary: #89DDFF;
+  --color-on-secondary: #00374e;
+  --color-surface-container: #242424;
   --color-surface-container-low: #1c1b1b;
+  --color-surface-container-high: #2a2a2a;
   --color-surface-container-highest: #353535;
   --color-outline: #8d909d;
   
