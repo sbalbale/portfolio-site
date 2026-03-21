@@ -1,6 +1,5 @@
 import React from "react";
-import Link from "next/link";
-import { FileText } from "lucide-react";
+import { FileText, ExternalLink } from "lucide-react";
 
 export interface Research {
   _id: string;
@@ -55,13 +54,25 @@ export default function ResearchSection({ data }: { data?: Research[] }) {
               {featured.abstract}
             </p>
 
-            <Link
-              href={featured.paper_url || "#"}
-              className="w-full md:w-auto flex items-center justify-center gap-3 rounded-none bg-primary/20 text-primary font-headline text-xs md:text-sm font-semibold px-6 py-4 md:px-8 md:py-4 uppercase tracking-[0.15em] transition-all duration-300 hover:brightness-110 shadow-[0_0_15px_rgba(130,170,255,0.05)] hover:shadow-[0_0_20px_rgba(130,170,255,0.15)]"
-            >
-              <FileText className="w-4 h-4 md:w-5 md:h-5" />
-              Read Full Paper
-            </Link>
+            {featured.paper_url ? (
+              <a
+                href={featured.paper_url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full md:w-auto flex items-center justify-center gap-3 rounded-none bg-primary/20 text-primary font-headline text-xs md:text-sm font-semibold px-6 py-4 md:px-8 md:py-4 uppercase tracking-[0.15em] transition-all duration-300 hover:brightness-110 shadow-[0_0_15px_rgba(130,170,255,0.05)] hover:shadow-[0_0_20px_rgba(130,170,255,0.15)]"
+              >
+                <FileText className="w-4 h-4 md:w-5 md:h-5" />
+                Read Full Paper
+                <ExternalLink className="w-3 h-3 md:w-4 md:h-4" />
+              </a>
+            ) : (
+              <div className="flex items-center gap-2 px-4 py-3 md:px-5 md:py-3 bg-foreground/5 border border-muted/20">
+                <div className="w-2 h-2 rounded-full bg-amber-500 animate-pulse" />
+                <span className="font-headline text-xs uppercase tracking-[0.15em] text-muted">
+                  {featured.publication_status || "Awaiting Publication"}
+                </span>
+              </div>
+            )}
           </div>
 
           <div className="absolute right-0 top-0 bottom-0 w-1/3 bg-gradient-to-l from-primary/5 to-transparent pointer-events-none hidden md:block" />
