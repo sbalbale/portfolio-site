@@ -1,0 +1,15 @@
+{
+  "name": "portfolio-site",
+  "private": true,
+  "packageManager": "pnpm@10.32.1",
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "lint": "turbo run lint"
+  },
+  "devDependencies": {
+    "turbo": "latest",
+    "typescript": "latest",
+    "@types/node": "latest"
+  }
+}
