@@ -28,8 +28,7 @@ export default async function ResumePage() {
               Back to Portfolio
             </Link>
             <h1 className="font-headline text-3xl md:text-4xl lg:text-5xl font-bold uppercase tracking-tighter text-foreground">
-              Resume <span className="text-primary">/</span>{" "}
-              <span className="text-muted">Curriculum Vitae</span>
+              Resume
             </h1>
           </div>
 
@@ -50,17 +49,6 @@ export default async function ResumePage() {
       {/* Content */}
       {data?.resumeUrl ? (
         <div className="flex-1 flex flex-col w-full max-w-7xl mx-auto px-6 md:px-12 py-8 md:py-12 gap-6">
-          {/* Mobile Download Fallback */}
-          <div className="md:hidden w-full">
-            <a
-              href={`${data.resumeUrl}?dl=`}
-              download
-              className="w-full text-center rounded-none bg-primary/20 text-primary font-headline text-sm font-semibold px-8 py-5 uppercase tracking-[0.15em] transition-all duration-300 hover:brightness-110 flex items-center justify-center gap-3"
-            >
-              <Download className="w-5 h-5" />
-              Download Resume (Recommended on Mobile)
-            </a>
-          </div>
 
           {/* PDF Viewer */}
           <iframe
