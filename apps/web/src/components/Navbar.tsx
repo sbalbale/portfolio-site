@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect } from "react";
 import { motion, useScroll, AnimatePresence } from "framer-motion";
-import Link from "next/link";
 import { Menu, X, Sun, Moon } from "lucide-react";
 import { useTheme } from "next-themes";
 
@@ -50,8 +49,25 @@ export default function Navbar() {
     setTheme(resolvedTheme === "light" ? "dark" : "light");
   };
 
+  const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    setMobileMenuOpen(false);
+    setTimeout(() => {
+      const targetId = href.replace("#", "");
+      const elem = document.getElementById(targetId);
+      if (elem) {
+        const elementPosition = elem.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.scrollY - 80;
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: "smooth"
+        });
+      }
+    }, 150);
+  };
+
   return (
-    <header className="fixed top-0 w-full z-50 bg-background/90 backdrop-blur-xl border-b border-muted/10 rounded-none transition-all">
+    <header className="fixed top-0 w-full z-[100] bg-background/90 backdrop-blur-xl border-b border-muted/10 rounded-none transition-all">
       {/* 1. Global Scroll Progress Bar */}
       <motion.div
         className="absolute top-0 left-0 right-0 h-[2px] bg-primary origin-left z-[60] pointer-events-none"
@@ -59,13 +75,13 @@ export default function Navbar() {
       />
 
       <div className="max-w-7xl mx-auto px-6 md:px-12 h-20 flex items-center justify-between relative z-50">
-        <Link
+        <a
           href="/"
           onClick={() => setMobileMenuOpen(false)}
-          className="font-headline font-bold text-xl tracking-widest text-foreground uppercase pr-4 flex items-center"
+          className="font-headline font-bold text-xl tracking-widest text-foreground uppercase pr-4 flex items-center cursor-pointer"
         >
           SB<span className="text-secondary">.</span>
-        </Link>
+        </a>
 
         <div className="hidden md:flex items-center gap-8">
           {/* Desktop Links */}
@@ -76,7 +92,8 @@ export default function Navbar() {
                 <a
                   key={item.name}
                   href={item.href}
-                  className={`font-headline text-xs tracking-[0.2em] uppercase transition-colors font-semibold flex items-center gap-2
+                  onClick={(e) => handleScroll(e, item.href)}
+                  className={`font-headline text-xs tracking-[0.2em] uppercase transition-colors font-semibold flex items-center gap-2 cursor-pointer
                     ${isActive ? "text-primary" : "text-muted hover:text-foreground"}
                   `}
                 >
@@ -92,15 +109,16 @@ export default function Navbar() {
           {/* Hardware Theme Toggle - Desktop */}
           <div className="border-l border-muted/30 pl-8 flex items-center">
             <button
+              type="button"
               onClick={toggleTheme}
-              className="flex items-center justify-center p-2 rounded-none border-2 border-muted/30 hover:bg-foreground/10 transition-colors text-foreground"
+              className="flex items-center justify-center p-2 rounded-none border-2 border-muted/30 hover:bg-foreground/10 transition-colors text-foreground cursor-pointer"
               aria-label="Toggle Theme"
             >
               {mounted ? (
                 resolvedTheme === "dark" ? (
-                  <Sun className="w-4 h-4 md:w-5 md:h-5" />
+                  <Sun className="w-4 h-4 md:w-5 md:h-5 pointer-events-none" />
                 ) : (
-                  <Moon className="w-4 h-4 md:w-5 md:h-5" />
+                  <Moon className="w-4 h-4 md:w-5 md:h-5 pointer-events-none" />
                 )
               ) : (
                 <div className="w-4 h-4 md:w-5 md:h-5" />
@@ -110,32 +128,34 @@ export default function Navbar() {
         </div>
 
         {/* Mobile controls */}
-        <div className="md:hidden flex items-center gap-4">
+        <div className="md:hidden flex items-center gap-4 relative z-[9999] pointer-events-auto">
           {/* Hardware Theme Toggle - Mobile */}
           <button
+            type="button"
             onClick={toggleTheme}
-            className="flex items-center justify-center p-2 rounded-none border-2 border-muted/30 hover:bg-foreground/10 transition-colors text-foreground"
+            className="flex items-center justify-center p-2 rounded-none border-2 border-muted/30 hover:bg-foreground/10 transition-colors text-foreground cursor-pointer"
             aria-label="Toggle Theme"
           >
             {mounted ? (
               resolvedTheme === "dark" ? (
-                <Sun className="w-4 h-4" />
+                <Sun className="w-4 h-4 pointer-events-none" />
               ) : (
-                <Moon className="w-4 h-4" />
+                <Moon className="w-4 h-4 pointer-events-none" />
               )
             ) : (
               <div className="w-4 h-4" />
             )}
           </button>
           <button
-            className="text-foreground p-2 focus:outline-none"
+            type="button"
+            className="text-foreground p-2 focus:outline-none cursor-pointer"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Toggle menu"
           >
             {mobileMenuOpen ? (
-              <X className="w-6 h-6" />
+              <X className="w-6 h-6 pointer-events-none" />
             ) : (
-              <Menu className="w-6 h-6" />
+              <Menu className="w-6 h-6 pointer-events-none" />
             )}
           </button>
         </div>
@@ -148,7 +168,7 @@ export default function Navbar() {
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            className="md:hidden bg-background/95 backdrop-blur-3xl overflow-hidden border-b border-muted/10 absolute top-20 left-0 w-full"
+            className="md:hidden bg-background/95 backdrop-blur-3xl overflow-y-auto border-b border-muted/10 absolute top-20 left-0 w-full z-[90] h-screen"
           >
             <nav className="flex flex-col px-6 py-8 gap-8">
               {navItems.map((item) => {
@@ -157,8 +177,8 @@ export default function Navbar() {
                   <a
                     key={item.name}
                     href={item.href}
-                    onClick={() => setMobileMenuOpen(false)}
-                    className={`font-headline text-lg tracking-[0.2em] uppercase font-bold flex items-center gap-3 transition-colors
+                    onClick={(e) => handleScroll(e, item.href)}
+                    className={`font-headline text-lg tracking-[0.2em] uppercase font-bold flex items-center gap-3 transition-colors cursor-pointer
                       ${isActive ? "text-primary" : "text-muted hover:text-foreground"}
                     `}
                   >
