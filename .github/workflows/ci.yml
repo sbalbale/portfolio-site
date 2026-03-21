@@ -26,6 +26,8 @@ jobs:
         env:
           # Required for Turborepo to compile the API route
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
+          TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
           NEXT_PUBLIC_SANITY_PROJECT_ID: mo0q6029
           NEXT_PUBLIC_SANITY_DATASET: production
           NEXT_PUBLIC_SANITY_API_VERSION: 2024-11-17
