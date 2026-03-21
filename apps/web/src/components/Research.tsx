@@ -12,11 +12,22 @@ export interface Research {
 }
 
 export default function ResearchSection({ data }: { data?: Research[] }) {
-  const featured = data?.[0];
-  if (!featured) return null;
+  if (!data || data.length === 0 || !data[0]) {
+    return (
+      <section id="research" className="min-h-screen w-full flex flex-col bg-background py-24 md:py-32 px-4 md:px-16 lg:px-32 items-center relative overflow-hidden">
+        <div className="w-full max-w-6xl my-auto relative z-10 text-center">
+          <h2 className="font-headline text-4xl font-bold uppercase tracking-tighter text-foreground mb-4">RESEARCH & PUBLICATIONS</h2>
+          <p className="text-muted font-body">Research data currently compiling. No literature deployed to this environment yet.</p>
+        </div>
+      </section>
+    );
+  }
+
+  const featured = data[0];
+
   return (
-    <section className="min-h-screen w-full flex flex-col justify-center bg-background pt-32 pb-48 px-4 md:px-16 lg:px-32 items-center relative overflow-hidden">
-      <div className="w-full max-w-6xl relative z-10">
+    <section id="research" className="min-h-screen w-full flex flex-col bg-background py-24 md:py-32 px-4 md:px-16 lg:px-32 items-center relative overflow-hidden">
+      <div className="w-full max-w-6xl my-auto relative z-10">
         <div className="bg-foreground/10 p-8 sm:p-12 md:p-24 shadow-2xl relative overflow-hidden rounded-none border border-muted/20">
           <div className="relative z-10 max-w-4xl">
             <span className="font-headline text-primary tracking-widest md:tracking-[0.4em] uppercase text-[10px] md:text-xs mb-6 md:mb-8 block font-bold">

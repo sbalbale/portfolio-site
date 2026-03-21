@@ -12,6 +12,12 @@ export default defineType({
       description: 'This is where form submissions will be sent.',
     }),
     defineField({
+      name: 'sendEmail',
+      title: 'Sending Email (From Address)',
+      type: 'string',
+      description: 'The authorized email address used to send the form submissions (e.g., contactform@seanbalbale.com)',
+    }),
+    defineField({
       name: 'location',
       title: 'Location',
       type: 'string',

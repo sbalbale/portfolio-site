@@ -6,14 +6,25 @@ export default defineType({
   type: 'document',
   fields: [
     defineField({
-      name: 'title',
-      title: 'Title',
+      name: 'heading',
+      title: 'Heading',
       type: 'string',
+    }),
+    defineField({
+      name: 'subText',
+      title: 'Subtext',
+      type: 'text',
     }),
     defineField({
       name: 'email',
       title: 'Email',
       type: 'string',
+    }),
+    defineField({
+      name: 'location',
+      title: 'Location',
+      type: 'string',
+      initialValue: "Hartford, CT / Weston, MA",
     }),
   ],
 })

@@ -19,8 +19,8 @@ export default function AboutSection({ data }: { data?: AboutData }) {
   ];
 
   return (
-    <section className="min-h-screen w-full flex flex-col justify-center bg-foreground/5 pt-32 pb-48 px-6 md:px-16 lg:px-32 relative">
-      <div className="max-w-6xl mx-auto flex flex-col md:grid md:grid-cols-12 gap-12 md:gap-16">
+    <section id="about" className="min-h-screen w-full flex flex-col bg-foreground/5 py-24 md:py-32 px-6 md:px-16 lg:px-32 relative overflow-hidden">
+      <div className="max-w-6xl mx-auto flex flex-col md:grid md:grid-cols-12 gap-12 md:gap-16 my-auto w-full relative z-10">
         {/* Left Column (Sticky Top Tracker) */}
         <div className="md:col-span-4 relative">
           <div className="md:sticky md:top-32">

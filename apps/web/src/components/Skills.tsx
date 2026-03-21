@@ -8,28 +8,22 @@ export interface SkillsData {
 }
 
 export default function SkillsSection({ data }: { data?: SkillsData }) {
-  const hardwareSkills = data?.hardwareSkills || [
-    "FPGA (Verilog)",
-    "PCB Design (Altium)",
-    "ARM Cortex-M",
-    "Signal Processing",
-  ];
-  const softwareSkills = data?.softwareSkills || [
-    "C++ / Embedded C",
-    "Rust (Safe Systems)",
-    "Python / ML Stack",
-    "Distributed Systems",
-  ];
-  const cloudSkills = data?.cloudSkills || [
-    "AWS Architecture",
-    "Kubernetes / Docker",
-    "CI/CD Automation",
-    "Terraform",
-  ];
+  if (!data) {
+    return (
+      <section id="skills" className="min-h-screen w-full flex flex-col bg-foreground/5 py-24 md:py-32 px-6 md:px-16 lg:px-32 relative overflow-hidden">
+        <div className="max-w-6xl mx-auto my-auto w-full relative z-10 text-center">
+          <h2 className="font-headline text-4xl font-bold uppercase tracking-tighter text-foreground mb-4">PROFICIENCIES_</h2>
+          <p className="text-muted font-body">Skill metrics currently compiling. No proficiencies deployed to this environment yet.</p>
+        </div>
+      </section>
+    );
+  }
+
+  const { hardwareSkills, softwareSkills, cloudSkills } = data;
 
   return (
-    <section className="min-h-screen w-full flex flex-col justify-center bg-foreground/5 pt-32 pb-48 px-6 md:px-16 lg:px-32 relative overflow-hidden">
-      <div className="max-w-6xl mx-auto relative z-10">
+    <section id="skills" className="min-h-screen w-full flex flex-col bg-foreground/5 py-24 md:py-32 px-6 md:px-16 lg:px-32 relative overflow-hidden">
+      <div className="max-w-6xl mx-auto my-auto w-full relative z-10">
         <div className="mb-12 md:mb-20">
           <h2 className="font-headline text-4xl md:text-5xl font-bold uppercase tracking-tighter text-foreground">
             PROFICIENCIES_

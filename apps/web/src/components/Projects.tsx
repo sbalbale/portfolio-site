@@ -16,13 +16,21 @@ export interface Project {
 export default function ProjectsSection({ data }: { data?: Project[] }) {
   const projects = data || [];
   const [activeIndex, setActiveIndex] = useState(0);
-  
-  if (!projects.length) return null;
+  if (!data || data.length === 0) {
+    return (
+      <section id="projects" className="min-h-screen py-24 md:py-32 px-6 md:px-16 lg:px-32 relative overflow-hidden flex flex-col bg-foreground/5">
+        <div className="max-w-6xl mx-auto w-full relative z-10 my-auto text-center">
+          <h2 className="font-headline text-4xl font-bold uppercase tracking-tighter text-foreground mb-4">SELECTED PROJECTS</h2>
+          <p className="text-muted font-body">Architecture data currently compiling. No projects deployed to this environment yet.</p>
+        </div>
+      </section>
+    );
+  }
   const activeProject = projects[activeIndex];
 
   return (
-    <section className="min-h-screen w-full flex flex-col justify-center bg-foreground/5 pt-32 pb-48 px-6 md:px-16 lg:px-32 relative overflow-hidden">
-      <div className="max-w-6xl mx-auto relative z-10">
+    <section id="projects" className="min-h-screen w-full flex flex-col bg-foreground/5 py-24 md:py-32 px-6 md:px-16 lg:px-32 relative overflow-hidden">
+      <div className="max-w-6xl mx-auto my-auto w-full relative z-10">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 md:gap-6 mb-12 md:mb-20 border-b border-muted/20 pb-6">
           <h2 className="font-headline text-4xl md:text-5xl font-bold uppercase tracking-tighter text-foreground">
             SELECTED PROJECTS

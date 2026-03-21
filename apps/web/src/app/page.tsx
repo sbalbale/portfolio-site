@@ -45,24 +45,12 @@ export default async function Home() {
       <div id="hero">
         <HeroSection data={heroData} settings={siteSettings} />
       </div>
-      <div id="about">
-        <AboutSection data={aboutData} />
-      </div>
-      <div id="experience">
-        <ExperienceSection data={experienceData} />
-      </div>
-      <div id="projects">
-        <ProjectsSection data={projectsData} />
-      </div>
-      <div id="research">
-        <ResearchSection data={researchData} />
-      </div>
-      <div id="skills">
-        <SkillsSection data={skillsData} />
-      </div>
-      <div id="contact">
-        <ContactSection data={siteSettings} />
-      </div>
+      <AboutSection data={aboutData} />
+      <ExperienceSection data={experienceData} />
+      <ProjectsSection data={projectsData} />
+      <ResearchSection data={researchData} />
+      <SkillsSection data={skillsData} />
+      <ContactSection data={contactData} />
     </main>
   );
 }
