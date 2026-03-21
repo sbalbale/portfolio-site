@@ -16,25 +16,61 @@ export async function POST(request: Request) {
       );
     }
 
-    // Internal notification HTML
+    // Internal notification HTML (adaptive dark mode)
     const internalHtml = `
-      <div style="font-family: monospace; background-color: #000; color: #fff; padding: 40px; border: 1px solid #333;">
-        <h2 style="color: #00e5ff; text-transform: uppercase; letter-spacing: 2px; border-bottom: 1px solid #333; padding-bottom: 10px;">Contact Payload Received</h2>
-        <p style="color: #888; font-size: 12px; margin-bottom: 30px;">ORIGIN: SEANBALBALE.COM</p>
-        <div style="margin-bottom: 20px;">
-          <strong style="color: #00e5ff; display: block; text-transform: uppercase; font-size: 10px;">Sender</strong>
-          <span style="font-size: 18px;">${name}</span>
+      <!DOCTYPE html>
+      <html>
+      <head>
+        <meta name="color-scheme" content="light dark">
+        <meta name="supported-color-schemes" content="light dark">
+        <style>
+          :root {
+            color-scheme: light dark;
+            supported-color-schemes: light dark;
+          }
+          .email-body { background-color: #ffffff !important; color: #000000 !important; }
+          .header-text { color: #000000 !important; border-bottom: 1px solid #eeeeee !important; }
+          .label { color: #666666 !important; }
+          .content-box { background-color: #f5f5f5 !important; border-left: 2px solid #00e5ff !important; }
+          .footer-border { border-top: 1px solid #eeeeee !important; color: #999999 !important; }
+
+          @media (prefers-color-scheme: dark) {
+            .email-body { background-color: #000000 !important; color: #ffffff !important; }
+            .header-text { color: #00e5ff !important; border-bottom: 1px solid #333333 !important; }
+            .label { color: #00e5ff !important; }
+            .content-box { background-color: #111111 !important; border-left: 2px solid #00e5ff !important; }
+            .footer-border { border-top: 1px solid #222222 !important; color: #444444 !important; }
+          }
+        </style>
+      </head>
+      <body class="email-body" style="font-family: monospace; padding: 40px; margin: 0;">
+        <div style="max-width: 600px; margin: 0 auto;">
+          <h2 class="header-text" style="text-transform: uppercase; letter-spacing: 2px; padding-bottom: 10px; margin-top: 0;">
+            Contact Payload Received
+          </h2>
+          <p style="font-size: 10px; margin-bottom: 30px; opacity: 0.7;">ORIGIN: SEANBALBALE.COM</p>
+
+          <div style="margin-bottom: 20px;">
+            <strong class="label" style="display: block; text-transform: uppercase; font-size: 10px; letter-spacing: 1px;">Sender</strong>
+            <span style="font-size: 18px; font-weight: bold;">${name}</span>
+          </div>
+
+          <div style="margin-bottom: 20px;">
+            <strong class="label" style="display: block; text-transform: uppercase; font-size: 10px; letter-spacing: 1px;">Return Path</strong>
+            <span style="font-size: 16px;">${email}</span>
+          </div>
+
+          <div class="content-box" style="margin-bottom: 30px; padding: 20px;">
+            <strong class="label" style="display: block; text-transform: uppercase; font-size: 10px; margin-bottom: 10px; letter-spacing: 1px;">Message Content</strong>
+            <p style="line-height: 1.6; margin: 0; font-size: 15px;">${message}</p>
+          </div>
+
+          <p class="footer-border" style="font-size: 10px; text-align: center; padding-top: 20px; text-transform: uppercase; letter-spacing: 1px;">
+            End of Transmission
+          </p>
         </div>
-        <div style="margin-bottom: 20px;">
-          <strong style="color: #00e5ff; display: block; text-transform: uppercase; font-size: 10px;">Return Path</strong>
-          <span style="font-size: 18px;">${email}</span>
-        </div>
-        <div style="margin-bottom: 30px; padding: 20px; background: #111; border-left: 2px solid #00e5ff;">
-          <strong style="color: #00e5ff; display: block; text-transform: uppercase; font-size: 10px; margin-bottom: 10px;">Message Content</strong>
-          <p style="line-height: 1.6; margin: 0;">${message}</p>
-        </div>
-        <p style="color: #444; font-size: 10px; text-align: center; border-top: 1px solid #222; padding-top: 20px;">END OF TRANSMISSION</p>
-      </div>
+      </body>
+      </html>
     `;
 
     // Automated success receipt HTML (adaptive dark mode)
