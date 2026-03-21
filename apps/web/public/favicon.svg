@@ -1,0 +1,16 @@
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    /* Default: Light Mode Colors */
+    .sb-text { fill: #000000; }
+    .sb-dot { fill: #00e5ff; }
+
+    /* Dark Mode Override */
+    @media (prefers-color-scheme: dark) {
+      .sb-text { fill: #ffffff; }
+    }
+  </style>
+  
+  <text x="2" y="24" font-family="monospace, sans-serif" font-weight="bold" font-size="20" class="sb-text">SB</text>
+  
+  <circle cx="28" cy="22" r="2.5" class="sb-dot" />
+</svg>

@@ -20,6 +20,21 @@ const spaceGrotesk = Space_Grotesk({
 export const metadata: Metadata = {
   title: "Sean Balbale | Portfolio",
   description: "Portfolio and architectural web deployment for Sean Balbale.",
+  icons: {
+    icon: [
+      // Primary: Adaptive SVG for modern browsers
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      // Fallbacks: Specific PNG sizes for older browsers/tabs
+      { url: "/favicon-32x32.png", type: "image/png", sizes: "32x32" },
+      { url: "/favicon-16x16.png", type: "image/png", sizes: "16x16" },
+      // Legacy: The .ico file for IE and old bookmarking tools
+      { url: "/favicon.ico", sizes: "any" },
+    ],
+    apple: [
+      // Crucial for iOS users who "Add to Home Screen"
+      { url: "/apple-touch-icon.png", sizes: "180x180" },
+    ],
+  },
 };
 
 export default async function RootLayout({
