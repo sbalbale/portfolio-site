@@ -20,7 +20,7 @@ export default function ExperienceSection({ data }: { data?: Experience[] }) {
         id="experience"
         className="min-h-screen w-full flex flex-col bg-background pt-24 pb-40 md:pt-32 md:pb-48 px-6 md:px-16 lg:px-32 relative overflow-hidden"
       >
-        <div className="max-w-4xl mx-auto my-auto w-full relative z-10 text-center shrink-0 py-12">
+        <div className="max-w-7xl mx-auto my-auto w-full relative z-10 text-center shrink-0 py-12">
           <h2 className="font-headline text-4xl font-bold uppercase tracking-tighter text-foreground mb-4">
             EXPERIENCE.
           </h2>
@@ -37,7 +37,7 @@ export default function ExperienceSection({ data }: { data?: Experience[] }) {
       id="experience"
       className="min-h-screen w-full flex flex-col bg-background pt-24 pb-40 md:pt-32 md:pb-48 px-6 md:px-16 lg:px-32 relative overflow-hidden"
     >
-      <div className="max-w-4xl mx-auto my-auto w-full relative z-10 shrink-0 py-12">
+      <div className="max-w-7xl mx-auto my-auto w-full relative z-10 shrink-0 py-12">
         <h2 className="font-headline text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter text-foreground mb-16 md:mb-24 uppercase">
           EXPERIENCE.
         </h2>
@@ -64,7 +64,7 @@ export default function ExperienceSection({ data }: { data?: Experience[] }) {
                     {exp.role}
                   </h4>
 
-                  <p className="font-body text-sm md:text-base lg:text-lg text-muted max-w-md leading-relaxed">
+                  <p className="font-body text-sm md:text-base lg:text-lg text-muted max-w-4xl leading-relaxed">
                     {exp.description}
                   </p>
                 </div>
