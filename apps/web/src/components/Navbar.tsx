@@ -6,13 +6,13 @@ import { Menu, X, Sun, Moon } from "lucide-react";
 import { useTheme } from "next-themes";
 
 const navItems = [
-  { name: "About", id: "about", href: "#about" },
-  { name: "Experience", id: "experience", href: "#experience" },
-  { name: "Projects", id: "projects", href: "#projects" },
-  { name: "Research", id: "research", href: "#research" },
-  { name: "Skills", id: "skills", href: "#skills" },
+  { name: "About", id: "about", href: "/#about" },
+  { name: "Experience", id: "experience", href: "/#experience" },
+  { name: "Projects", id: "projects", href: "/#projects" },
+  { name: "Research", id: "research", href: "/#research" },
+  { name: "Skills", id: "skills", href: "/#skills" },
   { name: "Resume", id: "resume", href: "/resume", isPage: true },
-  { name: "Contact", id: "contact", href: "#contact" },
+  { name: "Contact", id: "contact", href: "/#contact" },
 ];
 
 export default function Navbar() {
@@ -53,8 +53,16 @@ export default function Navbar() {
   const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
     setMobileMenuOpen(false);
+
+    const targetId = href.split("#")[1];
+
+    // If not on the home page, navigate there with the hash
+    if (window.location.pathname !== "/") {
+      window.location.href = href;
+      return;
+    }
+
     setTimeout(() => {
-      const targetId = href.replace("#", "");
       const elem = document.getElementById(targetId);
       if (elem) {
         const elementPosition = elem.getBoundingClientRect().top;
