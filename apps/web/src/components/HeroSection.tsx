@@ -15,7 +15,7 @@ export default function HeroSection({
   const subtitle =
     data?.subtitle ||
     "B.S. Computer Science & B.S. Electrical Engineering. Bridging the gap between physical systems and high-level computation.";
-  const resumeUrl = settings?.resumeUrl || data?.resumeUrl || "/resume";
+  const resumeUrl = data?.resumeUrl || "/resume";
   const githubUrl =
     settings?.githubUrl || data?.githubUrl || "https://github.com/seanbalbale";
 
