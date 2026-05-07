@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import { Mail, MapPin } from "lucide-react";
 import Turnstile from "react-turnstile";
 
@@ -15,7 +15,7 @@ export default function ContactSection({ data }: { data?: ContactData }) {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState("");
-  const turnstileRef = useRef<any>(null);
+  const [turnstileToken, setTurnstileToken] = useState<string>("");
 
   const heading = data?.heading || "ESTABLISH CONNECTION";
   const subText =
@@ -29,20 +29,18 @@ export default function ContactSection({ data }: { data?: ContactData }) {
     setLoading(true);
     setError("");
 
-    const formData = new FormData(e.currentTarget);
-    const token = await turnstileRef.current?.getResponse();
-
-    if (!token) {
+    if (!turnstileToken) {
       setError("Please complete the security verification.");
       setLoading(false);
       return;
     }
 
+    const formData = new FormData(e.currentTarget);
     const payload = {
       name: formData.get("name"),
       email: formData.get("email"),
       message: formData.get("message"),
-      token,
+      token: turnstileToken,
     };
 
     try {
@@ -58,14 +56,10 @@ export default function ContactSection({ data }: { data?: ContactData }) {
       }
 
       setSuccess(true);
-      if (turnstileRef.current) {
-        turnstileRef.current.reset();
-      }
+      setTurnstileToken("");
     } catch (err: any) {
       setError(err.message || "An error occurred.");
-      if (turnstileRef.current) {
-        turnstileRef.current.reset();
-      }
+      setTurnstileToken("");
     } finally {
       setLoading(false);
     }
@@ -180,15 +174,19 @@ export default function ContactSection({ data }: { data?: ContactData }) {
 
               <div className="flex justify-center my-4">
                 <Turnstile
-                  ref={turnstileRef}
                   sitekey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || ""}
                   theme="dark"
+                  onSuccess={(token) => setTurnstileToken(token)}
+                  onError={() => {
+                    setTurnstileToken("");
+                    setError("Security verification failed. Please try again.");
+                  }}
                 />
               </div>
 
               <button
                 type="submit"
-                disabled={loading}
+                disabled={loading || !turnstileToken}
                 className="mt-2 w-full md:w-auto self-start text-center rounded-none bg-primary/20 text-primary font-headline font-semibold text-xs md:text-sm px-6 py-4 md:px-8 md:py-5 uppercase tracking-[0.15em] transition-all duration-300 hover:brightness-110 shadow-[0_0_20px_rgba(130,170,255,0.1)] hover:shadow-[0_0_25px_rgba(130,170,255,0.2)] disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {loading ? "Transmitting..." : "Initialize Transfer"}
