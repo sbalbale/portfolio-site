@@ -1,7 +1,8 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { Mail, MapPin } from "lucide-react";
+import Turnstile from "react-turnstile";
 
 export interface ContactData {
   heading: string;
@@ -14,6 +15,7 @@ export default function ContactSection({ data }: { data?: ContactData }) {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState("");
+  const turnstileRef = useRef<any>(null);
 
   const heading = data?.heading || "ESTABLISH CONNECTION";
   const subText =
@@ -28,10 +30,19 @@ export default function ContactSection({ data }: { data?: ContactData }) {
     setError("");
 
     const formData = new FormData(e.currentTarget);
+    const token = await turnstileRef.current?.getResponse();
+
+    if (!token) {
+      setError("Please complete the security verification.");
+      setLoading(false);
+      return;
+    }
+
     const payload = {
       name: formData.get("name"),
       email: formData.get("email"),
       message: formData.get("message"),
+      token,
     };
 
     try {
@@ -42,12 +53,19 @@ export default function ContactSection({ data }: { data?: ContactData }) {
       });
 
       if (!res.ok) {
-        throw new Error("Failed to transmit payload.");
+        const data = await res.json();
+        throw new Error(data.error || "Failed to transmit payload.");
       }
 
       setSuccess(true);
+      if (turnstileRef.current) {
+        turnstileRef.current.reset();
+      }
     } catch (err: any) {
       setError(err.message || "An error occurred.");
+      if (turnstileRef.current) {
+        turnstileRef.current.reset();
+      }
     } finally {
       setLoading(false);
     }
@@ -159,6 +177,14 @@ export default function ContactSection({ data }: { data?: ContactData }) {
                   ERROR: {error}
                 </div>
               )}
+
+              <div className="flex justify-center my-4">
+                <Turnstile
+                  ref={turnstileRef}
+                  sitekey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || ""}
+                  theme="dark"
+                />
+              </div>
 
               <button
                 type="submit"

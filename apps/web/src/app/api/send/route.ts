@@ -9,11 +9,51 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(request: Request) {
   try {
-    const { name, email, message } = await request.json();
+    const { name, email, message, token } = await request.json();
 
     if (!name || !email || !message) {
       return NextResponse.json(
         { error: "Missing required fields." },
+        { status: 400 },
+      );
+    }
+
+    // Verify Turnstile token
+    if (!token) {
+      return NextResponse.json(
+        { error: "Security verification failed." },
+        { status: 400 },
+      );
+    }
+
+    const secretKey = process.env.TURNSTILE_SECRET_KEY;
+    if (!secretKey) {
+      console.error("TURNSTILE_SECRET_KEY not configured");
+      return NextResponse.json(
+        { error: "Server configuration error." },
+        { status: 500 },
+      );
+    }
+
+    const turnstileVerification = await fetch(
+      "https://challenges.cloudflare.com/turnstile/v0/siteverify",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          secret: secretKey,
+          response: token,
+        }),
+      }
+    );
+
+    const turnstileResult = await turnstileVerification.json();
+
+    if (!turnstileResult.success) {
+      return NextResponse.json(
+        { error: "Security verification failed. Please try again." },
         { status: 400 },
       );
     }
